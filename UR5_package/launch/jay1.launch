@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <group>
+    <include file="$(find ur5_moveit_config)/launch/ur5_moveit_planning_execution.launch">
+     </include>
+    </group> 
+    
+    <group>
+    <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>    
+     </include>
+     </group>
+     
+     <!--    <group>
+      <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
+        <arg name="robot_ip" value="$(arg robot_ip)" />
+      </include>
+    </group> -->
+
+   <group >
+      <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="/use_gui" value="true"/>
+        <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+      </node>
+    </group> 
+     
+  <!--   <group>
+        <include file="$(find ur5_moveit_config)/launch/move_group.launch">
+            <arg name="limited" value="true" />
+            <arg name="allow_trajectory_execution" value="true"/>
+            <arg name="fake_execution" value="true"/>
+            <arg name="info" value="true"/>
+            <arg name="debug" value="false"/>
+        </include>
+    </group> -->
+
+     
+     <node pkg="tf" type="static_transform_publisher" name="robot_camera_broadcaster" args="0 0 0 0 0 0 camera_link base_link 100" />
+     
+    <node name="move" pkg="UR5_package" type="move_robot" respawn="false" output="screen"></node>
+
+</launch>
