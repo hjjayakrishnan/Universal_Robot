@@ -1,3 +1,11 @@
+/**
+*
+* @author Jayakrishnan HJ
+* 
+* @date May 2018
+*
+*/
+
 #ifndef DOWNSAMPLE_H
 #define DOWNSAMPLE_H
 

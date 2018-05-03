@@ -1,3 +1,11 @@
+/**
+*
+* @author Jayakrishnan HJ
+* 
+* @date May 2018
+*
+*/
+
 #include "perception/plane_segmentation.h"
 #include "pcl_conversions/pcl_conversions.h"
 #include "pcl/common/angles.h"
@@ -124,7 +132,7 @@ void perception::Segmenter::Callback(const sensor_msgs::PointCloud2& msg) {
 
   
   //publishing marker cloud
-  
+  // Something wrong here! Doesn't create it in the right place. Maybe a tf issue?
     visualization_msgs::Marker table_marker;
     table_marker.ns = "table";
     //table_marker.header.frame_id = "camera_link";

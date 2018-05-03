@@ -1,3 +1,11 @@
+/**
+*
+* @author Jayakrishnan HJ
+* 
+* @date May 2018
+*
+*/
+
 #include "perception/plane_segmentation.h"
 #include "pcl_conversions/pcl_conversions.h"
 #include "pcl/common/angles.h"
@@ -104,6 +112,23 @@ void perception::Segmenter::Callback(const sensor_msgs::PointCloud2& msg) {
     sensor_msgs::PointCloud2 msg_out;
     pcl::toROSMsg(*subset_cloud, msg_out);
     surface_pub_.publish(msg_out);
+    
+    
+  //Extract subset of original_cloud into subset_cloud of objects
+  PointCloudC::Ptr subset_cloud_above(new PointCloudC);
+
+    // Extract subset of original_cloud into subset_cloud:
+    pcl::ExtractIndices<PointC> extract_above;
+    extract_above.setInputCloud(cloud);
+    extract_above.setIndices(indices_not_surface);
+    extract_above.setNegative(false);
+    extract_above.filter(*subset_cloud_above);
+  
+  //publishing surface cloud
+  
+   // sensor_msgs::PointCloud2 msg_out;
+    pcl::toROSMsg(*subset_cloud_above, msg_out);
+    above_surface_pub_.publish(msg_out);
 
   
   //publishing marker cloud
@@ -118,7 +143,7 @@ void perception::Segmenter::Callback(const sensor_msgs::PointCloud2& msg) {
     marker_pub_.publish(table_marker);
 }
 
-
+// Something wrong here! Doesn't create it in the right place. Maybe a tf issue?
 void perception::CreateBoundingBox(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud, 
                                              geometry_msgs::Pose* pose,
                                              geometry_msgs::Vector3* dimensions){

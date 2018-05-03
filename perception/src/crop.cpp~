@@ -12,7 +12,7 @@ perception::Cropper::Cropper(const ros::Publisher& pub) : pub_(pub) {}
 void perception::Cropper::Callback(const sensor_msgs::PointCloud2& msg) {
   PointCloudC::Ptr cloud(new PointCloudC());
   pcl::fromROSMsg(msg, *cloud);
-  ROS_INFO("Got point cloud with %ld points", cloud->size());
+ // ROS_INFO("Got point cloud with %ld points", cloud->size());
   
   //cropping
   //PointCloudC::Ptr cropped_cloud(new PointCloudC());
@@ -35,7 +35,7 @@ void perception::Cropper::Callback(const sensor_msgs::PointCloud2& msg) {
   crop.setMax(max_pt);
   PointCloudC::Ptr cropped_cloud(new PointCloudC());
   crop.filter(*cropped_cloud);
-  ROS_INFO("Cropped to %ld points", cropped_cloud->size());
+ // ROS_INFO("Cropped to %ld points", cropped_cloud->size());
   
   
   //publishing

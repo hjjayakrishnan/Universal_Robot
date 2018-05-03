@@ -1,3 +1,11 @@
+/**
+*
+* @author Jayakrishnan HJ
+* 
+* @date May 2018
+*
+*/
+
 #ifndef PLANE_SEGMENTATION_H
 #define PLANE_SEGMENTATION_H
 

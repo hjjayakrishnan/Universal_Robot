@@ -17,7 +17,9 @@ void CreateBoundingBox(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud,
 class Segmenter {
  public:
   Segmenter();
-  Segmenter(const ros::Publisher& pub);
+  Segmenter(const ros::Publisher& surface_pub_,
+            const ros::Publisher& above_surface_pub_,
+            const ros::Publisher& marker_pub_);
   void Callback(const sensor_msgs::PointCloud2& msg);
   
 

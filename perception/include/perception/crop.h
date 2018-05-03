@@ -1,3 +1,11 @@
+/**
+*
+* @author Jayakrishnan HJ
+* 
+* @date May 2018
+*
+*/
+
 #ifndef CROP_H
 #define CROP_H
 
