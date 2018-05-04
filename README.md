@@ -1,5 +1,5 @@
 # Universal_Robot
-Independent study on designing a perception pipeline to compute grasp poses and mainpulate using move-it for the UR5 robot
+Independent study on designing a perception pipeline to compute grasp poses and mainpulate using move-it for the UR5 robot.  
 youtube demo:https://www.youtube.com/watch?v=CdeaKv9TQwI
 
 ### Getting Started
