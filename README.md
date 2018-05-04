@@ -62,7 +62,7 @@ To start the Grasp pose detection:
 roslaunch gpd tutorial1.launch
 ```
 
-To start the manipulation based on grasping:
+To start the manipulation based on grasp poses:
 
 ```
 rosrun UR5_package grasp_expt.py
